@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail Corentin</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<script src="js/script.js"></script>
+<body>
+
+<header>
+    <nav>
+
+        <h1>EcoRide</h1>
+
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="covoiturages.html">Covoiturages</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<main class="detail-page">
+
+    <section class="detail-card">
+        <img src="images/corentin-conducteur.png" alt="Photo de Corentin" class="driver-photo">
+
+<img src="images/mercedez-benz-corentin.png" alt="Voiture de Corentin" class="car-photo">
+
+        <h2>Toulouse → Marseille</h2>
+
+        <p><strong>Conducteur :</strong> Corentin</p>
+
+        <p><strong>Départ :</strong> 14h15</p>
+
+        <p><strong>Arrivée estimée :</strong> 19h00</p>
+
+        <p><strong>Places restantes :</strong> 2</p>
+
+        <p><strong>Prix :</strong> 15 crédits</p>
+
+        <p><strong>Note :</strong> ⭐ 4.8 / 5</p>
+
+        <h3>Véhicule</h3>
+
+        <p>Mercedes-Benz EQA</p>
+
+        <h3>Préférences</h3>
+
+        <p>Musique autorisée et bonne humeur conseillée • Non fumeur • Pas d’animaux</p>
+
+        <h3>Avis</h3>
+
+        <p>“Trajet agréable et conducteur très sympathique.”</p>
+
+         <p><em>Les coordonnées sont communiquées après validation de la réservation.</em></p>
+
+      <button id="reserve_btn" onclick="afficherContact()">
+    Réserver ce trajet
+</button>
+
+<div id="contact-driver" style="display: none;">
+    <div class="contact-driver">
+
+        <h3>Contact chauffeur</h3>
+
+        <p><strong>Email :</strong> corentin@ecoride.fr</p>
+
+        <p><strong>Téléphone :</strong> 06 15 39 58 88</p>
+
+    </div>
+</div>
+    <br><br>
+
+
+
+   <button type="button" onclick="afficherAnnulation()">
+    Annuler le trajet
+</button>
+
+<div id="cancel-box" style="display: none;">
+
+    <div class="contact-driver">
+
+        <h3>Annulation du trajet</h3>
+
+        <p>
+            Vous pouvez annuler le trajet à tout moment.
+            Si l’annulation intervient moins de 12h avant le départ,
+            les crédits prélevés ne seront pas remboursés.
+        </p>
+
+        <label for="motif-annulation">Motif de l’annulation</label>
+
+        <textarea id="motif-annulation" placeholder="Expliquez le motif de votre annulation"></textarea>
+
+        <br><br>
+
+        <button type="button" onclick="confirmerAnnulation()">
+            Confirmer l’annulation
+        </button>
+
+    </div>
+
+</div>
+<div class="trip-status">
+
+    <h3>Statut du trajet</h3>
+
+    <p id="statut-trajet">
+        Trajet en attente de départ
+    </p>
+
+    <button type="button" onclick="demarrerTrajet()">
+        Démarrer le trajet
+    </button>
+
+    <button type="button" onclick="terminerTrajet()">
+        Terminer le trajet
+    </button>
+
+</div>
+
+<br><br>
+<div class="review-box">
+
+    <h3>Laisser un avis après le trajet</h3>
+
+    <p>
+        Après validation du trajet, le passager peut laisser une note et un avis sur le conducteur.
+    </p>
+
+    <label for="note">Note</label>
+
+    <select id="note">
+        <option value="">Choisir une note</option>
+        <option value="5">5 / 5</option>
+        <option value="4">4 / 5</option>
+        <option value="3">3 / 5</option>
+        <option value="2">2 / 5</option>
+        <option value="1">1 / 5</option>
+    </select>
+
+    <label for="avis">Avis</label>
+
+    <textarea id="avis" placeholder="Écrivez votre avis sur le trajet"></textarea>
+
+    <br><br>
+
+    <button type="button" onclick="envoyerAvis()">
+        Envoyer l’avis
+    </button>
+
+</div>
+
+<br><br>     
+
+        <a href="covoiturages.html" class="button-link">
+            Retour aux trajets
+        </a>
+
+        </section>
+</section>
+    </section>
+
+</main>
+
+<script>
+function afficherContact() {
+    alert("Réservation confirmée !");
+
+    document.getElementById("contact-driver").style.display = "block";
+}
+
+function afficherAnnulation() {
+
+    document.getElementById("cancel-box").style.display = "block";
+}
+
+function confirmerAnnulation() {
+
+    const motif = document.getElementById("motif-annulation").value;
+
+    if (motif === "") {
+
+        alert("Veuillez indiquer un motif d’annulation.");
+
+    } else {
+
+        alert("Annulation enregistrée. Si le délai de 12h est dépassé, les crédits ne seront pas remboursés.");
+    }
+}
+   function envoyerAvis() {
+
+    const note = document.getElementById("note").value;
+
+    const avis = document.getElementById("avis").value;
+
+    if (note === "" || avis === "") {
+
+        alert("Veuillez choisir une note et écrire un avis.");
+
+    } else {
+
+        alert("Merci ! Votre avis a été envoyé pour validation.");
+    }
+} 
+function demarrerTrajet() {
+
+    document.getElementById("statut-trajet").innerText =
+    "Trajet en cours";
+
+    alert("Le trajet a démarré.");
+}
+
+function terminerTrajet() {
+
+    document.getElementById("statut-trajet").innerText =
+    "Trajet terminé";
+
+    alert("Le trajet est terminé.");
+}</script>
+</body>
+</html>

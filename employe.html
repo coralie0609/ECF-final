@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Employé - EcoRide</title>
+   <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>EcoRide</h1>
+
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="covoiturages.html">Covoiturages</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="employee-page">
+
+        <h2>Espace Employé</h2>
+
+        <p>
+            Gestion des avis et signalements des utilisateurs.
+        </p>
+
+        <div class="review-box">
+
+            <h3>Avis signalé</h3>
+
+            <p>
+                “Le trajet avec ce conducteur était vraiment agréable et il est plutôt drôle, cela fait passer le temps plus vite !!.”
+            </p>
+
+            <button onclick="validerAvis()">
+                Valider l’avis
+            </button>
+
+            <button onclick="refuserAvis()">
+                Refuser l’avis
+            </button>
+
+        </div>
+
+        <div class="review-box">
+
+            <h3>Problème signalé</h3>
+
+            <p>
+                “J'étais en retard de 15 min et la conductrice me l'a bien fait remarquer, alors que cela arrive, un peu de tolérance !!.”
+            </p>
+
+            <button onclick="traiterProbleme()">
+                Traiter le signalement
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+
+function validerAvis() {
+    alert("Avis validé par l'employé.");
+}
+
+function refuserAvis() {
+    alert("Avis refusé par l'employé.");
+}
+
+function traiterProbleme() {
+    alert("Signalement traité.");
+}
+
+</script>
+
+</body>
+
+</html>

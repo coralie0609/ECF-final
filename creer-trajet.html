@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un trajet - EcoRide</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>EcoRide</h1>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="covoiturages.html">Covoiturages</a></li>
+            <li><a href="creer-trajet.html">Proposer un trajet</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="auth-page">
+
+    <section class="auth-card">
+
+        <h2>Proposer un trajet</h2>
+
+        <form>
+
+            <label>Ville de départ</label>
+            <input type="text" placeholder="Ex : Bordeaux">
+
+            <label>Ville d’arrivée</label>
+            <input type="text" placeholder="Ex : Toulouse">
+
+            <label>Date du trajet</label>
+            <input type="date">
+
+            <label>Heure de départ</label>
+            <input type="time">
+
+            <label>Heure d’arrivée</label>
+            <input type="time">
+
+            <label>Nombre de places</label>
+            <input type="number" min="1" max="8" placeholder="Ex : 3">
+
+            <label>Prix fixé par le chauffeur</label>
+            <input type="number" id="prix-chauffeur" placeholder="Ex : 20">
+
+            <p>Commission EcoRide : <strong>2 crédits</strong></p>
+            <p>Prix total payé par le passager : <strong id="prix-total">0 crédit</strong></p>
+
+            <label>Marque du véhicule</label>
+            <select>
+                <option>Renault</option>
+                <option>Peugeot</option>
+                <option>Citroën</option>
+                <option>Tesla</option>
+                <option>Volkswagen</option>
+                <option>Toyota</option>
+                <option>Fiat</option>
+                <option>BMW</option>
+            </select>
+
+            <label>Modèle du véhicule</label>
+            <input type="text" placeholder="Ex : Zoé, 208, Model 3">
+
+            <label>Énergie du véhicule</label>
+            <select>
+                <option>Essence</option>
+                <option>Diesel</option>
+                <option>Hybride</option>
+                <option>Électrique</option>
+            </select>
+
+            <label>Préférences</label>
+            <textarea placeholder="Ex : non fumeur, animaux acceptés, musique autorisée"></textarea>
+
+            <button type="button" onclick="creerTrajet()">
+                Créer le trajet
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script>
+const prixChauffeur = document.getElementById("prix-chauffeur");
+const prixTotal = document.getElementById("prix-total");
+
+prixChauffeur.addEventListener("input", function() {
+    const prix = Number(prixChauffeur.value);
+    const total = prix + 2;
+
+    if (prixChauffeur.value === "") {
+        prixTotal.textContent = "0 crédit";
+    } else {
+        prixTotal.textContent = total + " crédits";
+    }
+});
+
+function creerTrajet() {
+    alert("Trajet créé avec succès !");
+}
+</script>
+
+</body>
+</html>

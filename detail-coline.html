@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du trajet - EcoRide</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<script src="js/script.js"></script>
+<body>
+
+<header>
+    <nav>
+        <h1>EcoRide</h1>
+
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="covoiturages.html">Covoiturages</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="detail-page">
+
+    <section class="detail-card">
+        <img src="images/coline-conductrice.png" alt="Photo de Coline" class="driver-photo">
+
+<img src="images/renault-zoe-coline.png" alt="Voiture de Coline" class="car-photo">
+
+        <h2>Toulouse → Carcassonne</h2>
+
+        <p><strong>Conductrice :</strong> Coline</p>
+        <p><strong>Départ :</strong> 09h30</p>
+        <p><strong>Arrivée estimée :</strong> 10h45</p>
+        <p><strong>Places restantes :</strong> 3</p>
+        <p><strong>Prix :</strong> 12 crédits</p>
+        <p><strong>Note :</strong> ⭐ 4.8 / 5</p>
+
+        <h3>Véhicule</h3>
+        <p>Renault Zoé - électrique</p>
+
+        <h3>Préférences</h3>
+        <p>Non fumeur • Musique douce • Animaux acceptés</p>
+
+        <h3>Avis</h3>
+        <p>“Conductrice agréable,  ponctuelle et voiture très propre.”</p>
+
+       <p><em>Les coordonnées sont communiquées après validation de la réservation.</em></p>  
+       
+<button id="reserve_btn" onclick="afficherContact()">
+    Réserver ce trajet
+</button>
+
+<br><br>
+
+<button type="button" onclick="afficherAnnulation()">
+    Annuler le trajet
+</button>
+
+<div id="cancel-box" style="display: none;">
+
+    <div class="contact-driver">
+
+        <h3>Annulation du trajet</h3>
+
+        <p>
+            Vous pouvez annuler le trajet à tout moment.
+            Si l’annulation intervient moins de 12h avant le départ,
+            les crédits prélevés ne seront pas remboursés.
+        </p>
+
+        <label for="motif-annulation">Motif de l’annulation</label>
+
+        <textarea id="motif-annulation" placeholder="Expliquez le motif de votre annulation"></textarea>
+
+        <br><br>
+
+        <button type="button" onclick="confirmerAnnulation()">
+            Confirmer l’annulation
+        </button>
+
+    </div>
+
+</div>
+<div id="contact-driver" style="display: none;">
+    
+
+        <h3>Contact chauffeur</h3>
+
+        <p><strong>Email :</strong> coline@ecoride.fr</p>
+
+        <p><strong>Téléphone :</strong> 06 12 34 56 78</p>
+
+    </div>
+    <h3>Statut du trajet</h3>
+
+<p id="statut-trajet">
+    Trajet en attente de départ
+</p>
+
+<button onclick="demarrerTrajet()">
+    Démarrer le trajet
+</button>
+
+<button onclick="terminerTrajet()">
+    Terminer le trajet
+</button>
+<div class="review-box">
+
+    <h3>Laisser un avis après le trajet</h3>
+
+    <p>
+        Après validation du trajet, le passager peut laisser une note et un avis sur le conducteur.
+    </p>
+
+    <label for="note">Note</label>
+
+    <select id="note">
+
+        <option value="">Choisir une note</option>
+        <option value="5">5 / 5</option>
+        <option value="4">4 / 5</option>
+        <option value="3">3 / 5</option>
+        <option value="2">2 / 5</option>
+        <option value="1">1 / 5</option>
+
+    </select>
+
+    <label for="avis">Avis</label>
+
+    <textarea id="avis"
+    placeholder="Écrivez votre avis sur le trajet"></textarea>
+
+    <br><br>
+
+    <button type="button" onclick="envoyerAvis()">
+        Envoyer l’avis
+    </button>
+
+</div>
+</div>
+    </section>
+
+</main>
+<script src="js/script.js"></script>
+<script>
+
+function afficherContact() {
+
+    alert("Réservation confirmée !");
+
+    document.getElementById("contact-driver").style.display = "block";
+}
+
+function afficherAnnulation() {
+
+    document.getElementById("cancel-box").style.display = "block";
+}
+
+function confirmerAnnulation() {
+
+    const motif = document.getElementById("motif-annulation").value;
+
+    if (motif === "") {
+
+        alert("Veuillez indiquer un motif d’annulation.");
+
+    } else {
+
+        alert("Annulation enregistrée. Si le délai de 12h est dépassé, les crédits ne seront pas remboursés.");
+    }
+}
+function envoyerAvis() {
+
+    const note = document.getElementById("note").value;
+
+    const avis = document.getElementById("avis").value;
+
+    if (note === "" || avis === "") {
+
+        alert("Veuillez choisir une note et écrire un avis.");
+
+    } else {
+
+        alert("Merci ! Votre avis a été envoyé pour validation.");
+    }
+}
+function demarrerTrajet() {
+
+    document.getElementById("statut-trajet").innerText =
+    "Trajet en cours";
+
+    alert("Le trajet a démarré.");
+}
+
+function terminerTrajet() {
+
+    document.getElementById("statut-trajet").innerText =
+    "Trajet terminé";
+
+    alert("Le trajet est terminé.");
+}</script>
+</body>
+</html>

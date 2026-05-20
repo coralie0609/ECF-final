@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covoiturages - EcoRide</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <h1>EcoRide</h1>
+
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="covoiturages.html">Covoiturages</a></li>
+            <li><a href="connexion.html">Connexion</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="page-title">
+        <h2>Rechercher un covoiturage</h2>
+        <p>Trouvez un trajet économique et écologique.</p>
+    </section>
+
+    <section class="filters">
+
+    <select id="filter-eco">
+        <option value="">Tous les trajets</option>
+        <option value="oui">Voiture écologique</option>
+        <option value="non">Voiture non écologique</option>
+    </select>
+
+    <input type="number" id="filter-price" placeholder="Prix max">
+
+    <input type="number" id="filter-duration" placeholder="Durée max en heures">
+
+    <select id="filter-note">
+        <option value="">Toutes les notes</option>
+        <option value="4">Note minimum 4/5</option>
+        <option value="4.5">Note minimum 4.5/5</option>
+        <option value="4.8">Note minimum 4.8/5</option>
+    </select>
+
+    <button onclick="filtrerTrajets()">Filtrer</button>
+
+</section>
+
+    <section class="trips">
+
+        <h2>Résultats disponibles</h2>
+
+        <div class="trip-container">
+
+            <article class="trip-card"
+data-eco="oui"
+data-price="18"
+data-duration="2.3"
+data-note="4.8">
+                <h3>Toulouse → Sete</h3>
+                <p>Conducteur : Ethan</p>
+                <p>Départ : 08h30</p>
+                <p>Places restantes : 3</p>
+                <p>Prix : 18 crédits</p>
+                <p>⭐ 4.8 / 5</p>
+                <a href="detail-ethan.html" class="button-link">Détail</a>
+            </article>
+
+           <article class="trip-card"
+data-eco="oui"
+data-price="25"
+data-duration="5"
+data-note="4.9">
+                <h3>Paris → Lyon</h3>
+                <p>Conductrice : Romane</p>
+                <p>Départ : 10h00</p>
+                <p>Places restantes : 2</p>
+                <p>Prix : 25 crédits</p>
+                <p>⭐ 4.9 / 5</p>
+               <a href="detail-romane.html" class="button-link">Détail</a>
+            </article>
+
+            <article class="trip-card"
+data-eco="oui"
+data-price="10"
+data-duration="4.5"
+data-note="4.8">
+                <h3>Nice → Marseille</h3>
+                <p>Conducteur : Corentin</p>
+                <p>Départ : 14h15</p>
+                <p>Places restantes : 1</p>
+                <p>Prix : 10 crédits</p>
+                <p>⭐ 4.8 / 5</p>
+                <a href="detail-corentin.html" class="button-link">Détail</a>
+            </article>
+
+         <article class="trip-card"
+data-eco="oui"
+data-price="12"
+data-duration="2"
+data-note="4.9">  
+    <h3>Toulouse → Carcassonne</h3>
+    <p>Conductrice : Coline</p>
+    <p>Départ : 09h30</p>
+    <p>Places restantes : 3</p>
+    <p>Prix : 12 crédits</p>
+    <p>⭐ 4.9 / 5</p>
+    <a href="detail-coline.html" class="button-link">Détail</a>
+</article>
+
+        </div>
+
+    </section>
+
+</main>
+<script>
+
+function filtrerTrajets() {
+
+    const eco = document.getElementById("filter-eco").value;
+
+    const prixMax = document.getElementById("filter-price").value;
+
+    const dureeMax = document.getElementById("filter-duration").value;
+
+    const noteMin = document.getElementById("filter-note").value;
+
+    const trajets = document.querySelectorAll(".trip-card");
+
+    trajets.forEach(function(trajet) {
+
+        const trajetEco = trajet.dataset.eco;
+
+        const trajetPrix = parseFloat(trajet.dataset.price);
+
+        const trajetDuree = parseFloat(trajet.dataset.duration);
+
+        const trajetNote = parseFloat(trajet.dataset.note);
+
+        let afficher = true;
+
+        if (eco !== "" && trajetEco !== eco) {
+
+            afficher = false;
+        }
+
+        if (prixMax !== "" && trajetPrix > parseFloat(prixMax)) {
+
+            afficher = false;
+        }
+
+        if (dureeMax !== "" && trajetDuree > parseFloat(dureeMax)) {
+
+            afficher = false;
+        }
+
+        if (noteMin !== "" && trajetNote < parseFloat(noteMin)) {
+
+            afficher = false;
+        }
+
+        if (afficher) {
+
+            trajet.style.display = "block";
+
+        } else {
+
+            trajet.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
+</body>
+</html>
